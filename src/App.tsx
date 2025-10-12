@@ -11,6 +11,10 @@ const routes = [
     path: "/test",
     component: lazy(() => import("./pages/Test/index.tsx")),
   },
+  {
+    path: "/template",
+    component: lazy(() => import("./pages/Template/index.tsx")),
+  },
 ];
 
 export default function App() {
