@@ -1,45 +1,77 @@
-import { Button } from "@/comps/Button";
-import { Title } from "@/comps/Title";
+import { Card } from "@/comps/Card";
+import { Flex } from "@/comps/Flex";
+import { Form } from "@/comps/Form";
+import { Input } from "@/comps/Input";
+import { Password } from "@/comps/Password";
 import { useSignal } from "@/utils";
 
-export default function Page() {
-  const count = useSignal([[1]]);
-
-  function addOne() {
-    count.update(cur => {
-      cur[0][0] += 1;
-    });
-  }
-
-  function subOne() {
-    count.update(cur => {
-      cur[0][0] -= 1;
-    });
-  }
-
-  const double = useSignal(() => {
-    return count.get()[0][0] * 2;
-  });
+export default function App() {
+  const text = useSignal("");
 
   return (
-    <div>
-      <h1>test</h1>
-      <Title>Test</Title>
-      <a href="/">Home</a>
-      <div class="flex items-center justify-between p-2">
-        <Button onclick={addOne} class={Button.blue}>
-          +1
-        </Button>
-        <Button onclick={subOne} class={Button.red}>
-          -1
-        </Button>
-        <Button onclick={subOne} class="" disabled>
-          -1
-        </Button>
-        <div>{count.get()[0][0]}</div>
-        <div>{double.get()}</div>
-        <button onclick={() => double.set(Math.random())}>随机</button>
-      </div>
-    </div>
+    <>
+      <Card>
+        <Card.Title>水平表单</Card.Title>
+        <Form>
+          <Form.Item label="123">
+            <Input placeholder="文本类型" value={text} />
+          </Form.Item>
+          <Form.Item label="123">
+            <Input placeholder="密码类型" type="password" value={text} />
+          </Form.Item>
+          <Form.Item label="123" isRequired>
+            <Input value={text} disabled placeholder="禁用状态" />
+          </Form.Item>
+          <Form.Item label="123">
+            <Input value={text} readonly placeholder={"只读状态"} />
+          </Form.Item>
+          <Form.Item label="1jkljl23">
+            <Password placeholder="密码组件" value={text} />
+          </Form.Item>
+        </Form>
+      </Card>
+
+      <Card>
+        <Card.Title>水平表单 - 右对齐</Card.Title>
+        <Form>
+          <Form.Item label="123" labelClass="text-right">
+            <Input placeholder="文本类型" value={text} />
+          </Form.Item>
+          <Form.Item label="123" labelClass="text-right">
+            <Input placeholder="密码类型" type="password" value={text} />
+          </Form.Item>
+          <Form.Item label="123" isRequired labelClass="text-right">
+            <Input value={text} disabled placeholder="禁用状态" />
+          </Form.Item>
+          <Form.Item label="123" labelClass="text-right">
+            <Input value={text} readonly placeholder={"只读状态"} />
+          </Form.Item>
+          <Form.Item label="1jkljl23" labelClass="text-right">
+            <Password placeholder="密码组件" value={text} />
+          </Form.Item>
+        </Form>
+      </Card>
+
+      <Card>
+        <Card.Title>垂直表单</Card.Title>
+        <Form>
+          <Form.ItemVertical label="123" isRequired>
+            <Input placeholder="文本类型" value={text} />
+          </Form.ItemVertical>
+          <Form.ItemVertical label="123">
+            <Input placeholder="密码类型" type="password" value={text} />
+          </Form.ItemVertical>
+          <Form.ItemVertical label="123">
+            <Input value={text} disabled placeholder="禁用状态" />
+          </Form.ItemVertical>
+          <Form.ItemVertical label="123">
+            <Input value={text} readonly placeholder={"只读状态"} />
+          </Form.ItemVertical>
+          <Form.ItemVertical label="1jkljl23">
+            <Password placeholder="密码组件" value={text} />
+          </Form.ItemVertical>
+        </Form>
+      </Card>
+    </>
   );
 }

@@ -11,7 +11,7 @@ export function Title(props: IProps<ITitleProps>) {
   const { children } = useProps(props, {});
   const title = document.querySelector("title")!;
   useEffect(() => {
-    title.innerText = children.get();
+    title.innerText = children;
   });
 
   return <></>;
