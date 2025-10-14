@@ -1,4 +1,4 @@
-import { useProps, wrapper, type ClassName, type IProps } from "@/utils";
+import { useProps, type ClassName, type IProps } from "@/utils";
 import type { JSX } from "solid-js";
 import { twMerge } from "tailwind-merge";
 import { Password } from "./Password";
