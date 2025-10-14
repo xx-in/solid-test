@@ -70,12 +70,12 @@ export type ISignalProp<T> = T | ISignal<NonNullable<T>>;
  */
 type IDatas<T> = {
   // 普通属性：非 on 开头，非 children
-  [K in keyof Required<T> as K extends `on${string}` | "children" ? never : K]: ISignal<
-    NonUndefined<T[K]>
-  >;
+  [K in keyof Required<T> as K extends `on${string}` | `${string}Children` | "children"
+    ? never
+    : K]: ISignal<NonUndefined<T[K]>>;
 } & {
   // on 开头属性或 children：保持原样
-  [K in keyof T as K extends `on${string}` | "children" ? K : never]: T[K];
+  [K in keyof T as K extends `on${string}` | `${string}Children` | "children" ? K : never]: T[K];
 };
 
 /**
@@ -101,12 +101,12 @@ export function useProps<T extends Record<string, any>>(
     ...props,
   }).forEach(([prop, value]) => {
     /**
-     * 如果以on开头或者为chidren
+     * 如果以on开头或者为属性包含chidren
      * 则该内容直接渲染，不处理
      *
      * 否则处理为信号类型
      */
-    if (prop == "children" || prop.startsWith("on")) {
+    if (prop.match(/children/i) || prop.startsWith("on")) {
       // @ts-ignore
       result[prop] = value;
     } else {

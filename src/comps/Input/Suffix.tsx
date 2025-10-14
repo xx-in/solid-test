@@ -1,13 +1,14 @@
 import { useProps, type Children, type ClassName, type IProps } from "@/utils";
 import { twMerge } from "tailwind-merge";
+import { Flex } from "@/comps/Flex";
 
-interface ISvgProps {
+interface ISuffixProps {
   children: Children;
   class?: ClassName;
   onclick?: () => void;
 }
 
-export function Svg(props: IProps<ISvgProps>) {
+export function Suffix(props: IProps<ISuffixProps>) {
   const {
     children,
     class: className,
@@ -16,11 +17,11 @@ export function Svg(props: IProps<ISvgProps>) {
     class: "",
   });
 
-  const baseClass = twMerge(["flex items-center"]);
+  const baseClass = twMerge(["border-l-1 border-gray-300 px-2 outline-hidden"]);
 
   return (
-    <svg class={twMerge(baseClass, className.get())} onclick={onclick}>
+    <Flex class={twMerge(baseClass, className.get())} onclick={onclick}>
       {children}
-    </svg>
+    </Flex>
   );
 }

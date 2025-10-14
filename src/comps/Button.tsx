@@ -20,7 +20,7 @@ export function Button(props: IProps<IButtonProps>) {
   });
 
   const baseClass = twMerge([
-    "cursor-pointer py-1 px-4 rounded-sm ",
+    "cursor-pointer py-1 px-4 rounded-full",
     "disabled:cursor-not-allowed",
     "transition border border-transparent",
     "inline-flex items-center justify-center",

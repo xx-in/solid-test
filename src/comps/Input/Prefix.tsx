@@ -1,13 +1,13 @@
 import { useProps, type Children, type ClassName, type IProps } from "@/utils";
 import { twMerge } from "tailwind-merge";
-
-interface IFlexProps {
+import { Flex } from "@/comps/Flex";
+interface IPrefixProps {
   children: Children;
   class?: ClassName;
   onclick?: () => void;
 }
 
-export function Flex(props: IProps<IFlexProps>) {
+export function Prefix(props: IProps<IPrefixProps>) {
   const {
     children,
     class: className,
@@ -16,13 +16,11 @@ export function Flex(props: IProps<IFlexProps>) {
     class: "",
   });
 
-  // console.log("??flex", children);
-
-  const baseClass = twMerge(["flex items-center flex-wrap"]);
+  const baseClass = twMerge(["border-r-1 border-gray-300 px-2 overflow-hidden"]);
 
   return (
-    <div class={twMerge(baseClass, className.get())} onclick={onclick}>
+    <Flex class={twMerge(baseClass, className.get())} onclick={onclick}>
       {children}
-    </div>
+    </Flex>
   );
 }

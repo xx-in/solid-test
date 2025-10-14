@@ -1,28 +1,17 @@
-## Usage
+# solid-js 组件库
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+为什么选择`solid-js`来实现这个组件库，而不是用其他的框架呢，是因为`solid-js`存在几个优势：
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+1. 基于信号量机制，渲染逻辑更清晰，虽然存在`API`上的不一致性，但经过封装后已经较为一致。
+   - 信号量是我选择的重要原因，因为信号可以在各种位置传递，而不会丢失响应式。
+2. 基于`JSX`渲染，边界条件少，相比`react`心智负担较轻，没有`hooks`各种限制。
 
-## Available Scripts
+## 高阶组件
 
-In the project directory, you can run:
+`solid-js`中的`children`因为采用的编译方案，是直接将组件编译为`DOM`，而不存在`虚拟DOM`中转。所以`children`存在一些特殊行为:
 
-### `npm run dev`
+注意：这里的`children`指的是`props.children`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+- `children` 在`ts`中的类型是普通变量，但实际上是一个`readSignal`函数。
 
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-Learn more about deploying your application with the [documentations](https://vite.dev/guide/static-deploy.html)
+- `children`只能被渲染一次，第二次渲染是移动，原因未知，如果需要多次渲染，考虑多包裹一次函数实现。

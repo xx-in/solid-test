@@ -62,7 +62,7 @@ export function ButtonList() {
   }
 
   return (
-    <div class="p-4">
+    <div class="px-4">
       <Card>
         <Card.Title>按钮组件</Card.Title>
         <Grid class="grid-cols-10 gap-4">
@@ -102,7 +102,7 @@ export function ButtonList() {
           <Button
             class="rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white shadow-lg transition-all duration-300 hover:from-pink-500 hover:to-yellow-500"
             onclick={() => {
-              addToast("我是一个自定义按钮样式", "info", 6 * 1000);
+              addToast("我是一个自定义按钮样式", "fail", 6 * 1000);
             }}
           >
             渐变按钮
