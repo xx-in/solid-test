@@ -82,7 +82,7 @@ type IDatas<T> = {
  * 参数类型
  */
 export type IProps<T> = {
-  [K in keyof T]: ISignalProp<T[K]>;
+  [K in keyof T]: T[K] | ISignal<NonNullable<T[K]>>;
 };
 
 /**

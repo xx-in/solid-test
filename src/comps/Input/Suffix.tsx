@@ -5,14 +5,14 @@ import { Flex } from "@/comps/Flex";
 interface ISuffixProps {
   children: Children;
   class?: ClassName;
-  onclick?: () => void;
+  onClick?: () => void;
 }
 
 export function Suffix(props: IProps<ISuffixProps>) {
   const {
     children,
     class: className,
-    onclick,
+    onClick,
   } = useProps(props, {
     class: "",
   });
@@ -20,7 +20,7 @@ export function Suffix(props: IProps<ISuffixProps>) {
   const baseClass = twMerge(["border-l-1 border-gray-300 px-2 outline-hidden"]);
 
   return (
-    <Flex class={twMerge(baseClass, className.get())} onclick={onclick}>
+    <Flex class={twMerge(baseClass, className.get())} onClick={onClick}>
       {children}
     </Flex>
   );

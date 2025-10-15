@@ -24,9 +24,11 @@ export function Password(props: IProps<IPasswordProps>) {
       "w-full border border-gray-300 rounded-lg outline-none transition px-1",
       "inline-flex items-stretch",
       "has-[input:disabled]:bg-gray-100",
-      "has-[input:focus]:ring-blue-500 has-[input:focus]:ring-2 has-[input:focus]border-transparent",
-      "has-[input:read-only:focus]:ring-0 has-[input:read-only:focus]:border-gray-300",
+      "has-[input:focus]:ring-blue-500 has-[input:focus]:ring-1 has-[input:focus]:border-transparent",
+      "has-[input:read-only:focus]:ring-0 has-[input:read-only]:border-gray-100",
     ]),
+    min: -Infinity,
+    max: Infinity,
   });
 
   const inputClass = twMerge([
@@ -49,7 +51,7 @@ export function Password(props: IProps<IPasswordProps>) {
   return (
     <div class={twMerge(baseClass.get(), className.get())}>
       <Input {...restProps} baseClass={inputClass} type={type} />
-      <div class="flex items-center p-2" onclick={toggle}>
+      <div class="flex items-center p-2" onClick={toggle}>
         <Show when={type.get() != "password"}>
           <Svg.EyeOpened class="size-4 cursor-pointer" />
         </Show>

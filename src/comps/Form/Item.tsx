@@ -6,11 +6,12 @@ import { Show } from "solid-js";
 export interface IFormItemProps {
   children: Children;
   class?: ClassName;
-  onclick?: () => void;
+  onClick?: () => void;
   label: string;
   labelClass?: ClassName;
   showColon?: boolean;
   isRequired?: boolean;
+  error?: string;
 }
 
 /**
@@ -22,24 +23,27 @@ export function Item(props: IProps<IFormItemProps>) {
   const {
     children,
     class: className,
-    onclick,
+    onClick,
     label,
     labelClass,
     showColon,
     isRequired,
+    error,
   } = useProps(props, {
     class: "",
     showColon: true,
     labelClass: "",
     isRequired: false,
+    error: "",
   });
 
-  const baseClass = twMerge(["flex items-center flex-wrap justify-start my-4 gap-2"]);
-
-  console.log("??children", typeof children);
+  const baseClass = twMerge([
+    "flex items-center flex-wrap justify-start",
+    "mb-1 gap-1 pb-5 relative",
+  ]);
 
   return (
-    <Flex class={twMerge(baseClass, className.get())} onclick={onclick}>
+    <Flex class={twMerge(baseClass, className.get())} onClick={onClick}>
       <div class={twMerge("w-20", labelClass.get())}>
         <Show when={isRequired.get()}>
           <span class="pr-0.5 text-red-500">*</span>
@@ -50,7 +54,10 @@ export function Item(props: IProps<IFormItemProps>) {
         </Show>
       </div>
       <div class="w-full flex-1">{children}</div>
-      {/* <div class="absolute bottom-0 left-2 text-left text-sm text-red-500">出错了</div> */}
+      <div class="absolute bottom-0 left-0 flex gap-2 pl-1 text-xs text-red-500">
+        <div class={twMerge("h-1 w-20", labelClass.get())}></div>
+        {error.get()}
+      </div>
     </Flex>
   );
 }

@@ -31,10 +31,12 @@ export function Group(props: IProps<IGroupProps>) {
     baseClass: twMerge([
       "w-full border border-gray-300 rounded-lg outline-none transition",
       "inline-flex items-stretch overflow-hidden",
-      "has-[input:disabled]:bg-gray-100",
-      "has-[input:focus]:ring-blue-500 has-[input:focus]:ring-2 has-[input:focus]border-transparent",
+      "has-[input:disabled]:bg-gray-100 has-[input:read-only]:bg-gray-50",
+      "has-[input:focus]:ring-blue-500 has-[input:focus]:ring-1 has-[input:focus]border-transparent",
       "has-[input:read-only:focus]:ring-0 has-[input:read-only:focus]:border-gray-300",
     ]),
+    min: -Infinity,
+    max: Infinity,
   });
 
   const inputClass = twMerge([

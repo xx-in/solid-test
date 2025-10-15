@@ -4,14 +4,14 @@ import { twMerge } from "tailwind-merge";
 interface IFlexProps {
   children: Children;
   class?: ClassName;
-  onclick?: () => void;
+  onClick?: () => void;
 }
 
 export function Flex(props: IProps<IFlexProps>) {
   const {
     children,
     class: className,
-    onclick,
+    onClick,
   } = useProps(props, {
     class: "",
   });
@@ -21,7 +21,7 @@ export function Flex(props: IProps<IFlexProps>) {
   const baseClass = twMerge(["flex items-center flex-wrap"]);
 
   return (
-    <div class={twMerge(baseClass, className.get())} onclick={onclick}>
+    <div class={twMerge(baseClass, className.get())} onClick={onClick}>
       {children}
     </div>
   );

@@ -5,7 +5,7 @@ interface IButtonProps {
   children: Children;
   class?: ClassName;
   disabled?: boolean;
-  onclick?: () => void;
+  onClick?: () => void;
 }
 
 export function Button(props: IProps<IButtonProps>) {
@@ -13,20 +13,20 @@ export function Button(props: IProps<IButtonProps>) {
     children,
     class: className,
     disabled,
-    onclick,
+    onClick,
   } = useProps(props, {
     class: Button.default,
     disabled: false,
   });
 
   const baseClass = twMerge([
-    "cursor-pointer py-1 px-4 rounded-full",
+    "cursor-pointer py-1 px-4 rounded-lg",
     "disabled:cursor-not-allowed",
     "transition border border-transparent",
     "inline-flex items-center justify-center",
   ]);
   return (
-    <button class={twMerge(baseClass, className.get())} onclick={onclick} disabled={disabled.get()}>
+    <button class={twMerge(baseClass, className.get())} onClick={onClick} disabled={disabled.get()}>
       {children}
     </button>
   );

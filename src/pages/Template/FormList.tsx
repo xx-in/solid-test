@@ -18,9 +18,9 @@ export default function FormList() {
     <div class="px-4">
       <Card>
         <Card.Title>垂直表单</Card.Title>
-        <Flex>
+        {/* <Flex>
           <Button class={Button.blue}>校验</Button>
-        </Flex>
+        </Flex> */}
         <Form>
           <Form.ItemVertical label="文本类型" isRequired>
             <Input value={text} />
@@ -62,7 +62,7 @@ export default function FormList() {
               prefixChildren={
                 <Input.Prefix
                   class="cursor-pointer border-none pl-4 hover:bg-blue-100 hover:text-blue-500"
-                  onclick={handleSearch}
+                  onClick={handleSearch}
                 >
                   <Svg.Search class="size-4" />
                 </Input.Prefix>
@@ -76,7 +76,7 @@ export default function FormList() {
               suffixChildren={
                 <Input.Suffix
                   class="cursor-pointer px-4 hover:bg-blue-100 hover:text-blue-500"
-                  onclick={handleSearch}
+                  onClick={handleSearch}
                 >
                   <Svg.Search class="size-4" />
                 </Input.Suffix>
@@ -107,6 +107,31 @@ export default function FormList() {
               }
               value={text}
             ></Input.Group>
+          </Form.ItemVertical>
+
+          <Form.ItemVertical label="最小值为0，最大值为10，精度为0，自动计算步长为1">
+            <Input.Number min={0} max={10} precision={0} />
+          </Form.ItemVertical>
+          <Form.ItemVertical label="精度为1，自动计算步长为0.1">
+            <Input.Number precision={1} />
+          </Form.ItemVertical>
+          <Form.ItemVertical label="精度为1，步长为1">
+            <Input.Number precision={1} step={1} />
+          </Form.ItemVertical>
+          <Form.ItemVertical label="精度为4，步长为0.1">
+            <Input.Number precision={4} step={0.1} />
+          </Form.ItemVertical>
+
+          <Form.ItemVertical label="无控制按钮">
+            <Input.Number controls={false} />
+          </Form.ItemVertical>
+
+          <Form.ItemVertical label="禁用状态">
+            <Input.Number precision={4} step={0.1} disabled />
+          </Form.ItemVertical>
+
+          <Form.ItemVertical label="只读状态">
+            <Input.Number readonly precision={4} step={0.1} />
           </Form.ItemVertical>
         </Form>
       </Card>
@@ -154,7 +179,7 @@ export default function FormList() {
               suffixChildren={
                 <Input.Suffix
                   class="cursor-pointer px-4 hover:bg-blue-100 hover:text-blue-500"
-                  onclick={handleSearch}
+                  onClick={handleSearch}
                 >
                   <Svg.Search class="size-4" />
                 </Input.Suffix>
@@ -221,7 +246,7 @@ export default function FormList() {
               suffixChildren={
                 <Input.Suffix
                   class="cursor-pointer px-4 hover:bg-blue-100 hover:text-blue-500"
-                  onclick={handleSearch}
+                  onClick={handleSearch}
                 >
                   <Svg.Search class="size-4" />
                 </Input.Suffix>

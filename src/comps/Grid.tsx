@@ -4,14 +4,14 @@ import { twMerge } from "tailwind-merge";
 interface IGridProps {
   children: Children;
   class?: ClassName;
-  onclick?: () => void;
+  onClick?: () => void;
 }
 
 export function Grid(props: IProps<IGridProps>) {
   const {
     children,
     class: className,
-    onclick,
+    onClick,
   } = useProps(props, {
     class: "",
   });
@@ -21,7 +21,7 @@ export function Grid(props: IProps<IGridProps>) {
   const baseClass = twMerge(["grid items-center"]);
 
   return (
-    <div class={twMerge(baseClass, className.get())} onclick={onclick}>
+    <div class={twMerge(baseClass, className.get())} onClick={onClick}>
       {children}
     </div>
   );

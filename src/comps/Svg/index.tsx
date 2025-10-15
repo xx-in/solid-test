@@ -14,14 +14,14 @@ import { Calendar } from "./Calendar";
 export interface ISvgProps {
   children: Children;
   class?: ClassName;
-  onclick?: () => void;
+  onClick?: () => void;
 }
 
 export function Svg(props: IProps<ISvgProps>) {
   const {
     children,
     class: className,
-    onclick,
+    onClick,
   } = useProps(props, {
     class: "",
   });
@@ -29,7 +29,7 @@ export function Svg(props: IProps<ISvgProps>) {
   const baseClass = twMerge(["flex items-center size-4"]);
 
   return (
-    <svg class={twMerge(baseClass, className.get())} onclick={onclick}>
+    <svg class={twMerge(baseClass, className.get())} onClick={onClick}>
       {children}
     </svg>
   );
